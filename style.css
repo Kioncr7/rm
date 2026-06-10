@@ -1,0 +1,397 @@
+ :root {
+    --madrid-blue: #001E4E;
+    --madrid-gold: #C1A14E;
+    --madrid-white: #FFFFFF;
+    --soft-gray: #f8f9fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.8;
+    color: var(--madrid-blue);
+    background-color: var(--madrid-white);
+}
+
+/* Header */
+header {
+    background-color: var(--madrid-blue);
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 4px solid var(--madrid-gold);
+}
+
+
+/* Contenedor del Logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre el escudo y el texto */
+}
+
+/* Estilos del Escudo */
+.escudo {
+    height: 60px; /* Tamaño ideal para el menú */
+    width: auto;
+    filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.2));
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efecto de rotación leve al pasar el mouse sobre el escudo */
+.escudo:hover {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.logo-text {
+    font-family: 'Cinzel', serif;
+    /* Color Dorado Madrid Oficial */
+    color: #C1A14E !important; 
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    
+    /* Esto asegura que no herede colores extraños del fondo */
+    background: transparent;
+    display: inline-block;
+    vertical-align: middle;
+    
+    /* Un pequeño brillo para que no se pierda */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Si por error el texto quedó dentro de un link <a>, esto lo arregla también: */
+.logo-container a, .logo-container span {
+    color: #C1A14E !important;
+    text-decoration: none;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .escudo {
+        height: 45px;
+    }
+    .logo-text {
+        font-size: 1rem;
+    }
+    .logo-container {
+        width: 100%;
+        justify-content: center; /* Centra el logo en móviles si el menú desaparece */
+    }
+}
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li a {
+    color: var(--madrid-white);
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--madrid-gold);
+}
+
+/* Hero Section Animada */
+/* Contenedor principal del Hero */
+.hero {
+    position: relative;
+    height: 80vh; /* Ajusta la altura a tu gusto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    overflow: hidden; /* Importante para que el video no se salga */
+}
+
+/* El video propiamente dicho */
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1; /* Al fondo */
+    transform: translate(-50%, -50%); /* Centra el video perfectamente */
+    object-fit: cover; /* Hace que el video cubra todo el espacio sin estirarse */
+}
+
+/* Capa oscura (Overlay) para que el texto sea legible */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 30, 78, 0.5); /* Azul Madrid con transparencia */
+    z-index: 2;
+}
+
+/* El contenido (Texto) */
+.hero-content {
+    position: relative;
+    z-index: 3; /* Por encima del video y del overlay */
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 5rem;
+    color: #f9efefb1 !important;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+    margin-bottom: 15px;
+    animation: slideUp 1.2s ease-out;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    color: #C1A14E !important;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+/* Contenedores y Texto */
+.container {
+    padding: 80px 10%;
+}
+
+.section-title {
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background: var(--madrid-gold);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.text-block p {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+/* Grid de Tarjetas Animadas */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.card {
+    background: var(--soft-gray);
+    padding: 30px;
+    border-radius: 15px;
+    border-bottom: 5px solid var(--madrid-gold);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0,30,78,0.15);
+}
+
+/* Contenedor de la imagen para controlar el tamaño */
+.img-container {
+    width: 100%;
+    height: 250px; /* Altura fija para que todas las tarjetas sean iguales */
+    overflow: hidden; /* Corta lo que sobre de la imagen */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: var(--navy); /* Fondo por si la imagen tarda en cargar */
+}
+
+/* Estilo de la imagen */
+.player-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen sin estirarla (la recorta inteligentemente) */
+    object-position: top; /* Centra la vista en la cara del jugador */
+    transition: transform 0.5s ease; /* Suavidad para la animación */
+}
+
+/* Animación creativa: Zoom al pasar el mouse sobre la tarjeta */
+.card:hover .player-img {
+    transform: scale(1.1); /* La imagen crece un poco */
+}
+
+/* Ajuste adicional para la tarjeta */
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+/* Palmarés / Stats */
+.dark-bg {
+    background-color: var(--madrid-blue);
+    color: white;
+    padding: 100px 10%;
+}
+
+.white-text { color: white; }
+
+.stats-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.stat-item {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.stat-item .number {
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--madrid-gold);
+    line-height: 1;
+    display: block;
+    margin-bottom: 10px;
+}
+/* Subtítulo de la galería */
+.subtitle-galeria {
+    text-align: center;
+    margin-top: -30px;
+    margin-bottom: 40px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Grid de la Galería */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.galeria-item {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Capa que aparece al pasar el mouse */
+.overlay-galeria {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 30, 78, 0.7); /* Azul Madrid transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.overlay-galeria span {
+    color: #C1A14E; /* Dorado */
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 1px solid #C1A14E;
+    padding: 10px 20px;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+/* Animaciones al hacer Hover */
+.galeria-item:hover img {
+    transform: scale(1.15); /* Zoom suave */
+}
+
+.galeria-item:hover .overlay-galeria {
+    opacity: 1;
+}
+
+.galeria-item:hover .overlay-galeria span {
+    transform: translateY(0);
+}
+
+/* Ajuste para que la galería se vea bien en tablets/móviles */
+@media (max-width: 600px) {
+    .galeria-grid {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en móvil */
+    }
+    .galeria-item {
+        height: 180px;
+    }
+}
+
+/* Footer */
+footer {
+    background: #0a0a0a;
+    color: white;
+    padding: 50px 10%;
+    text-align: center;
+}
+
+.gold-line {
+    width: 100px;
+    height: 2px;
+    background: var(--madrid-gold);
+    margin: 20px auto;
+}
+
+/* Animaciones */
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.5rem; }
+    .container { padding: 40px 5%; }
+    header { flex-direction: column; }
+    nav ul { margin-top: 20px; }
+    nav ul li { margin: 0 10px; }
+}
